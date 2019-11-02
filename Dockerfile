@@ -14,8 +14,8 @@ RUN echo "==> Updating Python Core" && \
 ADD ./requirements.txt /tmp/requirements.txt
 RUN pip3 install --no-cache-dir -q -r /tmp/requirements.txt
 
-COPY ./src /opt/src
-WORKDIR /opt/src
+COPY . /opt/app
+WORKDIR /opt/app/src
 
 # RUN adduser -d guru
 # USER guru
@@ -27,4 +27,4 @@ WORKDIR /opt/src
 
 # Run the app.  CMD is required to run on Heroku
 # $PORT is set by Heroku
-CMD gunicorn --bind 0.0.0.0:$PORT wsgi
+CMD gunicorn --bind 0.0.0.0:$PORT wsgi:application
