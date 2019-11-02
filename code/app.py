@@ -1,16 +1,7 @@
-from flask import Flask, render_template, request
-from flask_wtf import FlaskForm
+from flask import Flask, render_template, request, url_for, redirect
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'you-will-never-guess'
-
-from flask_wtf import FlaskForm
-from wtforms import TextAreaField, SubmitField
-from wtforms.validators import DataRequired
-
-class TextForm(FlaskForm):
-    text = TextAreaField('Paste your research here:', validators=[DataRequired()])
-    submit = SubmitField('Publish')
 
 def replace_words(text):
     import re
@@ -18,33 +9,34 @@ def replace_words(text):
         'complex':'complicated',
         'gate':'door',
         'refund':'trophy',
-
         'researching':'copying',
         'implementation':'paste',
-
         'we':'I',
         'our':'my',
         'ours':'mine',
         'clear':'evident',
-        'my team':'myself'
+        'my team':'myself',
+        'easy':'hard',
+        'simple':'complex'
     }
     for word, replacement in dictionary.items():
         func = re.compile(re.escape(word), re.IGNORECASE)
         text = func.sub(replacement, text)
+        del func
     return text
 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    form = TextForm()
-    if form.validate_on_submit():
-        text = form.text.data
-        print('Text: {}'.format(text))
-        print('Form: {}'.format(request.form['text']))
+    text = request.form.get('target', '')
+    if request.method=='POST' and text:
+        text = replace_words(text)
+    return render_template('index.html', text=text)
 
-        form.text.data = replace_words(text)
-        return render_template('home.html', form=form)
-    return render_template('home.html', form=form)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return redirect(url_for('index'))
 
 
 if __name__ == '__main__':

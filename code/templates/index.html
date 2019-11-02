@@ -15,24 +15,27 @@
   <!-- Begin page content -->
   <main role="main" class="flex-shrink-0">
     <div class="container">
-      <h1 class="mt-5">Sirajify</h1>
-      <!-- <p class="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS.</p> -->
-
-      <form action="" method="post" novalidate>
-          {{ form.hidden_tag() }}
-          <p>
-              {{ form.text.label }}<br>
-              {{ form.text(size=32) }}
-          </p>
-          <p>{{ form.submit() }}</p>
-      </form>
-
+      <center>
+        <h1 class="mt-5">🔮 Sirajify 🔮</h1>
+        {% from "includes/_formhelpers.html" import render_field %}
+        <form action="" method="post" novalidate>
+            <textarea class="form-control" id="exampleFormControlTextarea" name="target" rows="12" placeholder="Paste your research here">{{text}}</textarea>
+            <input type="submit" class="btn btn-primary btn-block mt-3" value="Publish">
+        </form>
+      </center>
     </div>
   </main>
-
+  <!-- End page content -->
   <footer class="footer mt-auto py-3">
     <div class="container">
-      <span class="text-muted">Place sticky footer content here.</span>
+        <small>
+          <center>
+            <a href="https://github.com/minelminel/sirajify">
+              <img src="{{ url_for('static', filename='github.png') }}"
+                class="img-responsive" style="max-width: 32px;">
+            </a>
+          </center>
+        </small>
     </div>
   </footer>
 
