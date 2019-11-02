@@ -29,6 +29,7 @@ def replace_words(text):
         'our':'my',
         'ours':'mine',
         'clear':'evident',
+        'as a team':'by myself',
         'my team':'myself',
         'difficult':'trivial',
         'easy':'hard',
