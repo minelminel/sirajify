@@ -14,8 +14,8 @@ RUN echo "==> Updating Python Core" && \
 ADD ./requirements.txt /tmp/requirements.txt
 RUN pip3 install --no-cache-dir -q -r /tmp/requirements.txt
 
-COPY . /opt/app
-WORKDIR /opt/app/src
+COPY src /opt/app
+WORKDIR /opt/app
 
 # RUN adduser -d guru
 # USER guru
