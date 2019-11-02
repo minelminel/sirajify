@@ -1,17 +1,7 @@
 # Sirajify
 
-### Docker
-```bash
-# build
-docker build -t siraj:latest .
-# run
-docker run -d -p 80:5000 siraj:latest
-```
+### --> [Try It Out](https://sirajify.herokuapp.com) <--
 
-`master` branch is automatically pushed to production, so make sure that any CI has passed before merging
+Inspired by [this tweet](https://twitter.com/AnjumSayed/status/1183611121590140929?s=20) from [@AnjumSayed](https://twitter.com/AnjumSayed)
 
-### ToDo
-- decide if centos or alpine is better for docker base
-- simple test
-- deploy to heroku?
-- automate travis agent pipeline, if we really wanna go crazy
+For background context, check out [this fantastic writeup from Gant Lamborde.](https://medium.com/@gantlaborde/siraj-rival-no-thanks-fe23092ecd20)

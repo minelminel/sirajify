@@ -17,14 +17,4 @@ RUN pip3 install --no-cache-dir -q -r /tmp/requirements.txt
 COPY src /opt/app
 WORKDIR /opt/app
 
-# RUN adduser -d guru
-# USER guru
-
-# These commands are not supported by Heroku, only for use with local devel
-# EXPOSE 5000
-# ENTRYPOINT ["python3"]
-# CMD ["app.py"]
-
-# Run the app.  CMD is required to run on Heroku
-# $PORT is set by Heroku
 CMD gunicorn --bind 0.0.0.0:$PORT wsgi:application
