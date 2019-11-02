@@ -17,10 +17,11 @@
     <div class="container">
       <center>
         <h1 class="mt-5">🔮 Sirajify 🔮</h1>
+        <br>
         {% from "includes/_formhelpers.html" import render_field %}
         <form action="" method="post" novalidate>
-            <textarea class="form-control" id="exampleFormControlTextarea" name="target" rows="12" placeholder="Paste your research here">{{text}}</textarea>
-            <input type="submit" class="btn btn-primary btn-block mt-3" value="Publish">
+            <textarea class="form-control" id="FormText" name="FormText" rows="12" placeholder="Paste some text here..">{{text}}</textarea>
+            <input type="submit" class="btn btn-primary btn-block mt-3" value="Plaigarize">
         </form>
       </center>
     </div>
@@ -39,10 +40,10 @@
     </div>
   </footer>
   <!--
-    ____________________
-  /                    \
-  !  Please, don't     !
-  !  plaigarize ppl!   !
+    ___________________
+  /  Plaigarization    \
+  !  without citation  !
+  !  is theft!         !
   \____________________/
           !  !
           !  !
