@@ -4,12 +4,13 @@ from flask import Flask, Blueprint, render_template, request, url_for, redirect
 def create_app(settings=None):
     application = Flask(__name__)
     application.config['SECRET_KEY'] = 'you-will-never-guess'
-    application.config.update(settings)
+    if settings:
+        application.config.update(settings)
     application.register_blueprint(app)
 
     @application.errorhandler(404)
     def page_not_found(e):
-        return redirect(url_for('app.index'))
+        return redirect(url_for('main.index'))
 
     return application
 
